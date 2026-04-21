@@ -10,6 +10,14 @@ import os
 #Loading environment variables from .env file, per ex: API keys
 load_dotenv()
 
+#Configuring the streamlit page, was the first st command
+st.set_page_config(
+    page_title="FinZ",
+    page_icon="💶",
+    layout="wide"
+)
+
+
 #Customizing CSS to style metric cards and sidebar
 st.markdown("""
     <style>
@@ -39,12 +47,6 @@ st.markdown("""
         </style>
 """, unsafe_allow_html=True)
 
-#Configuring the streamlit page, was the first st command
-st.set_page_config(
-    page_title="FinZ",
-    page_icon="💶",
-    layout="wide"
-)
 
 #Was ensuring the database exists before any operations
 create_table()
@@ -195,7 +197,7 @@ Be concise, friendly, and direct. Use euros for amounts."""
                     messages=st.session_state.messages
                 )
                 reply = response.content[0].text
-                
+
                 st.write(reply)
         st.session_state.messages.append({"role": "assistant",
                                           "content": reply})
